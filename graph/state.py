@@ -10,6 +10,8 @@ class ResearchState(TypedDict):
     technical_report: str 
     # transcript between bullish and bearish researchers 
     debate_transcript: list 
+    # research manager verdict
+    research_verdict: str
     # trader agent report 
     trader_strategy: str 
     # risk management report (deciding whether to account for aggressive, neutral and conservative)
