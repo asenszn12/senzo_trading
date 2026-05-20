@@ -1,15 +1,26 @@
 import yfinance as yf 
+from datetime import date
 
-ticker = yf.Ticker('AAPL') ## find way for ppl to type in ticker
-print(ticker.news) ## all info about the company
 
-# get as much info as you can from the yfinance 
-# can use to get fundamentals data and technical too 
-def get_fundamentals(ticker, date): 
-    pass
+def get_fundamentals(ticker): 
+    stock = yf.Ticker(ticker)
+    company_info = stock.info
+    company_financials = stock.financials
+    company__balance_sheet = stock.balance_sheet
+    company_cashflow = stock.cashflow
+    return {
+        "info": company_info,
+        "financials": company_financials,
+        "balance_sheet": company__balance_sheet,
+        "cashflow": company_cashflow
+    }
 
-def price_history(ticker, date): 
-    pass 
+def price_history(ticker, start_date): 
+    stock = yf.Ticker(ticker)
+    company_history = stock.history(start=start_date, end=date.today())
+    return company_history
 
 def get_news(ticker):
-    pass
+    stock = yf.Ticker(ticker)
+    company_news = stock.news
+    return company_news
