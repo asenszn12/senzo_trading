@@ -9,9 +9,10 @@ def sentimental_analyst_node(state: ResearchState):
             model="openrouter/free", 
             messages=[
                 {"role": "system", 
-                 "content":"You are a Sentimental analyst for Hedge Fund"}
+                 "content":"You are a Sentimental analyst for Hedge Fund called "
+                 "Senzo Trading"}
             ]
         )
         
-    return {"sentimental_analyst": "placeholder"}
+    return {"sentimental_analyst": response.choices[0].messages.content}
 
