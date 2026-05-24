@@ -1,5 +1,6 @@
 from graph.state import ResearchState
 from data.market_data import get_fundamentals
+from datetime import date as currTime
 import requests
 import os 
 from dotenv import load_dotenv
@@ -21,6 +22,7 @@ def fundamental_analyst_node(state: ResearchState):
         json={
             "model": "openrouter/free",
             "messages": [
+
                 {"role": "system", "content": "You are a fundamental analyst for Senzo Trading, "
                 "an AI research firm, You will receive raw financial data for company given "
                 "their ticker. This is through but not limited to company income statements, "
@@ -29,8 +31,10 @@ def fundamental_analyst_node(state: ResearchState):
                 " and any red flags. End your report with a markdown table summarising "
                 "they key points and metrics. Your reporter will then be read by a bull "
                 "and bear researcher who will debate about your findings"},
-                
-                {"role": "user", "content": "user_data_placeholder"}
+
+                {"role": "user", "content": f"Analyse the following fundamental data"
+                f"for {ticker} as of {date} until {currTime.today()}. "
+                f"Here is the fundamentals financial data: {fundamentals}"}
             ]
         }
     )
