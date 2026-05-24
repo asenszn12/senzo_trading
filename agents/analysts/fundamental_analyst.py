@@ -1,17 +1,32 @@
 from graph.state import ResearchState
-from openrouter import OpenRouter 
+from data.market_data import get_fundamentals
+import requests
 import os 
+from dotenv import load_dotenv
 
+load_dotenv()
 
 def fundamental_analyst_node(state: ResearchState):
-    with OpenRouter(api_key=os.getenv("OPENROUTER_API_KEY")) as client: 
-        # makes the api call and produces a response object
-        response = client.chat.send(
-            model="openrouter/free", 
-            messages=[
-                {"role": "system", 
-                 "content":"You are a Fundamentals analyst for Hedge Fund"}
+    ticker = state["ticker"]
+    date = state["date"]
+
+    fundamentals = get_fundamentals(ticker)
+    
+    response = requests.post(
+        "https://openrouter.ai/api/v1/chat/completions",
+        headers={
+            "Authorization": f"Bearer {os.getenv('OPENROUTER_API_KEY')}",
+            "Content-Type": "application/json"
+        }, 
+        json={
+            "model": "openrouter/free",
+            "messages": [
+                {"role": "system", "content": "system_prompt_placeholder"},
+                {"role": "user", "content": "user_data_placeholder"}
             ]
-        )
-        
-    return {"fundamental_report": response.choices[0].message.content}
+        }
+    )
+    result = response.json()["choices"][0]["message"]["content"]
+    return {"fundamentals_report": result}
+
+    
