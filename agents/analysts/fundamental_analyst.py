@@ -23,14 +23,12 @@ def fundamental_analyst_node(state: ResearchState):
             "model": "openrouter/free",
             "messages": [
 
-                {"role": "system", "content": "You are a fundamental analyst for Senzo Trading, "
-                "an AI research firm, You will receive raw financial data for company given "
-                "their ticker. This is through but not limited to company income statements, "
-                "balance sheets, and cashflow. Your job is to interpret this given data and "
-                "organise a clear report covering the company's financial health, growth trajectory,"
-                " and any red flags. End your report with a markdown table summarising "
-                "they key points and metrics. Your reporter will then be read by a bull "
-                "and bear researcher who will debate about your findings"},
+                {"role": "system", "content": "You are a fundamental analyst at Senzo Trading, "
+                "an AI research firm. You will receive raw financial data for a company including "
+                "income statements, balance sheets, and cashflow statements. Interpret this data "
+                "and write a concise research report covering financial health, growth trajectory, "
+                "and any red flags. End with a markdown table of key metrics. Your report will "
+                "be read by a bull and bear researcher who will debate your findings."},
 
                 {"role": "user", "content": f"Analyse the following fundamental data"
                 f"for {ticker} as of {date} until {currTime.today()}. "
