@@ -1,0 +1,7 @@
+pyproject.toml
+settings.py
+senzo_trading.egg-info/PKG-INFO
+senzo_trading.egg-info/SOURCES.txt
+senzo_trading.egg-info/dependency_links.txt
+senzo_trading.egg-info/requires.txt
+senzo_trading.egg-info/top_level.txt

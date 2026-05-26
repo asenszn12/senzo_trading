@@ -3,6 +3,7 @@ from typing import TypedDict
 class ResearchState(TypedDict):
     ticker: str
     date: str 
+    benchmark: str
     # each analyst report 
     fundamental_report: str 
     sentimental_report: str 
