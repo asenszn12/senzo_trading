@@ -32,6 +32,7 @@ def get_news_sentiment(ticker):
     # format the results 
     lines = []
     for news in ticker_news:
+        # within content, get these fields
         title = news["content"]["title"]
         pub_date = news["content"]["pubDate"]
         summary = news["content"]["summary"]
