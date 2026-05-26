@@ -33,10 +33,9 @@ def sentimental_analyst_node(state: ResearchState):
                 "across each data source. Your report will be read by a bull and bear researcher "
                 "who will debate your findings."}, 
 
-                {"role": "user", "content":f"Analyse the following sentiment data for {ticker}.\n\n"
-                    f"REDDIT POSTS:\n{reddit_sentiment_data}\n\n"
-                    f"NEWS HEADLINES:\n{news_sentiment_data}\n\n"
-                    f"Identify the overall sentiment, score it, and flag any contradictions between retail sentiment and news coverage."}
+                {"role": "user", "content":f"Analyse sentiment for {ticker} as of {date}.\n\n"
+                f"REDDIT:\n{reddit_sentiment_data}\n\n"
+                f"NEWS:\n{news_sentiment_data}"}
             ]
         } )
 
