@@ -2,17 +2,20 @@ from graph.state import ResearchState
 import requests
 import os 
 from dotenv import load_dotenv
+from datetime import date as currTime
+from data.sentiment_data import get_reddit_sentiment, get_news_sentiment
 
 load_dotenv()
 
 def sentimental_analyst_node(state: ResearchState):
     ticker = state["ticker"]
-    date = state["ticker"]
-    sentimental = 0 
+    date = state["date"]
+    reddit_sentiment_data = get_reddit_sentiment(ticker)
+    news_sentiment_data = get_news_sentiment(ticker)
 
     response = requests.post("https://openrouter.ai/api/v1/chat/completions",
         headers={
-            "Authorization": f"Bearer {os.getev('OPENROUTER_API_KEY')}", 
+            "Authorization": f"Bearer {os.getenv('OPENROUTER_API_KEY')}", 
             "Content-Type":"application/json"
         } ,
         json={
@@ -30,11 +33,14 @@ def sentimental_analyst_node(state: ResearchState):
                 "across each data source. Your report will be read by a bull and bear researcher "
                 "who will debate your findings."}, 
 
-                {"role": "user", "content": "user_prompt"}
+                {"role": "user", "content":f"Analyse the following sentiment data for {ticker}.\n\n"
+                    f"REDDIT POSTS:\n{reddit_sentiment_data}\n\n"
+                    f"NEWS HEADLINES:\n{news_sentiment_data}\n\n"
+                    f"Identify the overall sentiment, score it, and flag any contradictions between retail sentiment and news coverage."}
             ]
         } )
 
 
-    result = response.json()["choices"][0]["messages"]["content"]
+    result = response.json()["choices"][0]["message"]["content"]
     return {"sentimental_report": result}
 
