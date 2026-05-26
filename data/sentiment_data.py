@@ -2,7 +2,7 @@ import yfinance as yf
 import requests
 from market_data import get_news
 
-def get_reddit_sentiment(ticker, date):
+def get_reddit_sentiment(ticker):
     subreddits = ["wallstreetbets", "stocks", "investing", "stockmarket"]
     headers = {"User-Agent": "Mozilla/5.0"}
     lines = []
