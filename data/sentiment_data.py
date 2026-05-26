@@ -2,6 +2,7 @@ import yfinance as yf
 import requests
 from market_data import get_news
 
+
 def get_reddit_sentiment(ticker):
     subreddits = ["wallstreetbets", "stocks", "investing", "stockmarket"]
     headers = {"User-Agent": "Mozilla/5.0"}
@@ -31,9 +32,10 @@ def get_news_sentiment(ticker):
     # format the results 
     lines = []
     for news in ticker_news:
-        title = news["title"]
-        providerPublishTime = news["providerPublishTime"]
-        lines.append(f"[{providerPublishTime}] {title}")
+        title = news["content"]["title"]
+        pub_date = news["content"]["pubDate"]
+        summary = news["content"]["summary"]
+        lines.append(f"[{pub_date}] {title} — {summary}")
 
     return "\n".join(lines)
  
