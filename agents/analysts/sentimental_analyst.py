@@ -1,5 +1,13 @@
 import sys
-sys.path.append('/Users/aadhi/senzo_trading')
+from pathlib import Path
+
+# 1. Dynamically append 'senzo_trading' to the system path
+current_file = Path(__file__).resolve()
+for parent in current_file.parents:
+    if parent.name == "senzo_trading":
+        sys.path.append(str(parent))
+        break
+    
 from graph.state import ResearchState
 import requests
 import os 
