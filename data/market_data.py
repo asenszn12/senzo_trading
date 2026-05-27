@@ -34,10 +34,28 @@ def price_history(ticker, start_date):
     company_history = stock.history(start=start_date, end=date.today())
     return company_history
 
+
+################################################################################
+#====================              MARKET NEWS             ====================#
+################################################################################
+# Fetch and structure recent news articles for a given ticker from Yahoo Finance.
+
 def get_news(ticker):
-    stock = yf.Ticker(ticker)
-    company_news = stock.news
-    return company_news
+    articles = yf.Ticker(ticker).news
+    if not articles:
+        return "No news found."
+    
+    items = []
+    for item in articles:
+        content = item.get("content", {})
+        items.append(
+            f"Title:  {content.get('title', 'N/A')}\n"
+            f"Date:   {content.get('pubDate', 'N/A')}\n"
+            f"Source: {content.get('provider', {}).get('displayName', 'N/A')}\n"
+            f"URL:    {content.get('canonicalUrl', {}).get('url', 'N/A')}\n"
+        )
+    
+    return "\n---\n".join(items)
 
 
 ################################################################################
@@ -262,5 +280,5 @@ def get_technicals(
 
 
 def technicals_to_str(technicals: dict) -> str:
-    """Serialise for injection into the agent user prompt."""
+    # Serialise for injection into the agent user prompt
     return json.dumps(technicals, indent=2, default=str)
