@@ -1,9 +1,11 @@
+import sys
+sys.path.append('/Users/aadhi/senzo_trading')
 from graph.state import ResearchState
 import requests
 import os 
 from dotenv import load_dotenv
-from datetime import date as currTime
 from data.sentiment_data import get_reddit_sentiment, get_news_sentiment
+
 
 load_dotenv()
 
@@ -42,4 +44,14 @@ def sentimental_analyst_node(state: ResearchState):
 
     result = response.json()["choices"][0]["message"]["content"]
     return {"sentimental_report": result}
+
+# run the file (__name__) as main and get the test output
+if __name__ == "__main__": 
+
+    test_state = {
+        "ticker": "AAPL", 
+        "date": "2026-01-01"
+    }
+    result = sentimental_analyst_node(test_state)
+    print(result)
 

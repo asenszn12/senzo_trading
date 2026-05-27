@@ -1,6 +1,8 @@
+import sys
+sys.path.append('/Users/aadhi/senzo_trading')
 import yfinance as yf 
 import requests
-from market_data import get_news
+from data.market_data import get_news
 
 
 def get_reddit_sentiment(ticker):
