@@ -13,6 +13,13 @@ No fabrication — if data is insufficient, state it.
 
 ---
 
+## INPUT
+- Ticker:          {TICKER}
+- Benchmark:       {BENCHMARK} (e.g., SPY, NDX, ASX200)
+- As-of Date:      {DATE}
+
+---
+
 ## TIMEFRAME MAPPING
 | Label       | Primary Chart | Confirmation Chart |
 |-------------|---------------|--------------------|
