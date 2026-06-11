@@ -124,4 +124,4 @@ def news_analyst_node(state: ResearchState):
 
     result = run_task(system=sys_prompt, user=user_prompt)
 
-    return {"news_analyst": result}
+    return {"news_report": result}
