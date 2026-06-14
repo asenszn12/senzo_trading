@@ -221,7 +221,7 @@ Signal Strength: apply Conviction Rubric.
 def technical_analyst_node(state: ResearchState):
     ticker = state["ticker"]
     date = state["date"]
-    benchmark = state["benchmark", "SPY"]
+    benchmark = state.get("benchmark", "SPY")
     technicals = get_technicals(ticker, date, benchmark)
 
     user_prompt = (
@@ -231,5 +231,5 @@ def technical_analyst_node(state: ResearchState):
     )
     result = run_task(system=sys_prompt, user=user_prompt)
 
-    return {"technical_analyst": result}
+    return {"technical_report": result}
 

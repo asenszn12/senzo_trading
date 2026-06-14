@@ -87,7 +87,7 @@ def fundamental_analyst_node(state: ResearchState):
     # Execute through the standard centralized task runner
     result = run_task(system=SYS_PROMPT, user=user_prompt)
     
-    return {"fundamentals_report": result}
+    return {"fundamental_report": result}
 
 if __name__ == "__main__":
     test_state = {
