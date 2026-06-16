@@ -13,7 +13,7 @@ from agents.run_task import run_task
 from dotenv import load_dotenv
 load_dotenv()
 
-sys_prompt=sys_prompt = """
+sys_prompt="""
 ## ROLE
 You are the Risk Management Team at Senzo Trading. You receive the research manager's 
 verdict and the trader's proposed strategy. Your job is to evaluate the proposed strategy 
