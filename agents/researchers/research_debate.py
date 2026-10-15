@@ -155,9 +155,9 @@ def research_debate_node(state: ResearchState):
 
     return {
         "debate_transcript": [
-            "Bull Researcher Opening Argument:\n" + bull_open,
-            "Bear Researcher Opening Argument:\n" + bear_open,
-            "Bull Researcher Rebuttal:\n" + bull_rebuttal,
-            "Bear Researcher Rebuttal:\n" + bear_rebuttal
+            f"Bull Researcher Opening Argument:\n {bull_open}",
+            f"Bear Researcher Opening Argument:\n {bear_open}",
+            f"Bull Researcher Rebuttal:\n {bull_rebuttal}",
+            f"Bear Researcher Rebuttal:\n {bear_rebuttal}"
         ]
     }

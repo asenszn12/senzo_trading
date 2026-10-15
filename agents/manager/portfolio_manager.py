@@ -40,7 +40,7 @@ from the inputs provided.
 - [Key point 2]
 - [Key point 3]
 
-**{trader_profile} Trader:**
+**Trader:**
 - [Key point 1]
 - [Key point 2]
 - [Key point 3]
