@@ -71,7 +71,7 @@ def sentimental_analyst_node(state: ResearchState):
     
     # Pre-fetch sources gracefully
     print(f"\n[Info] Fetching sentiment data for {ticker}...")
-    news_block = get_news_sentiment(ticker)
+    news_block = get_news_sentiment(ticker, start_date)
     reddit_block = get_reddit_sentiment(ticker)
     
     user_prompt = f"""Produce a comprehensive sentiment report for {ticker} covering the period from {start_date} to {end_date}.

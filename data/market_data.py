@@ -3,13 +3,14 @@ import warnings
 import numpy as np
 import pandas as pd
 import yfinance as yf
+import feedparser 
 
 import ta.momentum   as ta_mom
 import ta.trend      as ta_trend
 import ta.volatility as ta_vol
 import ta.volume     as ta_volu
 
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime, timezone
 from typing import Optional
 
 warnings.filterwarnings("ignore")
@@ -40,23 +41,34 @@ def price_history(ticker, start_date):
 ################################################################################
 # Fetch and structure recent news articles for a given ticker from Yahoo Finance.
 
-def get_news(ticker):
-    articles = yf.Ticker(ticker).news
-    if not articles:
-        return "No news found."
-    
-    items = []
-    for item in articles:
-        content = item.get("content", {})
-        items.append(
-            f"Title:  {content.get('title', 'N/A')}\n"
-            f"Date:   {content.get('pubDate', 'N/A')}\n"
-            f"Source: {content.get('provider', {}).get('displayName', 'N/A')}\n"
-            f"URL:    {content.get('canonicalUrl', {}).get('url', 'N/A')}\n"
-        )
-    
-    return "\n---\n".join(items)
+def get_news(ticker, start_date=None):
+    stock = yf.Ticker(ticker)
+    news = stock.news
+    if start_date is None:
+        return news
 
+    start = datetime.strptime(start_date, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+    filtered = []
+    if not filtered: 
+        return news 
+    for item in news:
+        pub = item["content"]["pubDate"]  # e.g. "2026-05-26T07:12:05Z"
+        pub_dt = datetime.fromisoformat(pub.replace("Z", "+00:00"))
+        if pub_dt >= start:
+            filtered.append(item)
+    return filtered
+
+def get_news_rss(ticker, start_date):
+    url = (
+        f"https://news.google.com/rss/search?q={ticker}+stock+after:{start_date}"
+        f"&hl=en-AU&gl=AU&ceid=AU:en"
+    )
+    feed = feedparser.parse(url)
+    lines = []
+    for entry in feed.entries[:25]:
+        source = entry.get("source", {}).get("title", "Unknown")
+        lines.append(f"[{entry.published}] {source} | {entry.title}")
+    return "\n".join(lines)
 
 ################################################################################
 #====================           MARKET TECHNICALS          ====================#
