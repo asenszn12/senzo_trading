@@ -1,5 +1,15 @@
+import sys
+from pathlib import Path
+
+current_file = Path(__file__).resolve()
+for parent in current_file.parents:
+    if parent.name == "senzo_trading":
+        sys.path.append(str(parent))
+        break
+
+from datetime import date as today_date
 from graph.state import ResearchState
-from data.market_data import get_news
+from data.market_data import get_news_rss 
 from agents.run_task import run_task
 from dotenv import load_dotenv
 
@@ -118,10 +128,21 @@ Total cited: [N] | Paywalled: [N] | Unverified: [N]
 def news_analyst_node(state: ResearchState):
     ticker = state["ticker"]
     date = state["date"]
-    news = get_news(ticker)
-    
-    user_prompt = f"Analyse the following news for the ticker {ticker} on the date {date}: {news}"
+
+    news_text = get_news_rss(ticker, date)
+    if not news_text:
+        news_text = "NO ARTICLES RETURNED"
+
+    user_prompt = (
+        f"Ticker: {ticker}\n"
+        f"Analysis window: {date} to {today_date.today()}\n\n"
+        f"NEWS ARTICLES:\n{news_text}"
+    )
 
     result = run_task(system=sys_prompt, user=user_prompt)
-
     return {"news_report": result}
+
+
+if __name__ == "__main__":
+    test_state = {"ticker": "NVDA", "date": "2026-10-14"}
+    print(news_analyst_node(test_state)["news_report"])

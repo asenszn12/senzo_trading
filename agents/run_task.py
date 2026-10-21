@@ -1,5 +1,4 @@
 import os
-
 import requests
 
 def run_task(system: str, user: str) -> str:
@@ -17,5 +16,5 @@ def run_task(system: str, user: str) -> str:
             ]
         }
     )
-
+    
     return response.json()["choices"][0]["message"]["content"]

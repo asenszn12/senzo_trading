@@ -12,12 +12,12 @@ for parent in current_file.parents:
         sys.path.append(str(parent))
         break
     
-from data.market_data import get_news
+from data.market_data import get_news_rss
 
 
 def get_random_header():
     """
-    Generates a randomized browser profile header to fragment the scraper's footprint
+    made a randomised browser profile header to fragment the scrapers footprint
     and avoid presenting a static signature to firewalls.
     """
     user_agents = [
@@ -91,12 +91,5 @@ def get_reddit_sentiment(ticker):
     return "\n".join(lines) if lines else "<unavailable: all Reddit fetches failed>"
 
 
-def get_news_sentiment(ticker):
-    """
-    Retrieves and returns the pre-formatted news string directly from market_data.py
-    """
-    try:
-        news = get_news(ticker)
-        return news if news else "<unavailable: No news found>"
-    except Exception as e:
-        return f"<unavailable: Error fetching news - {str(e)}>"
+def get_news_sentiment(ticker, start_date):
+    return get_news_rss(ticker, start_date)
