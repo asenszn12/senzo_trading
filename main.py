@@ -20,26 +20,18 @@ ascii_logo = r"""
 """
 
 def main():
-    # 1. Main Header Panel
-    header_text = f"""[bold blue]{ascii_logo}[/bold blue]
-[bold green]Senzo TRF: a multi-agentic research framework for trading.[/bold green]
+    # 1. Main Header Panel with centered Group elements
+    header_group = Group(
+        Align.center(f"[bold blue]{ascii_logo}[/bold blue]"),
+        Align.center("[bold green]Senzo TRF: a multi-agentic research framework for trading.[/bold green]\n"),
+        Align.center("[bold][underline]Workflow Steps:[/bold][/underline]\n"),
+        Align.center("[italic]Analyst team (fundamentals, sentiment, news, and technical) ➔  Bullish and Bearish researcher debate ➔  Research manager ➔  Trader (risk-adjusted) ➔  Portfolio manager[/italic]\n\n"),
+        Align.center("[dim]Built by Aadhi Senthilkumar (github.com/asenszn12) and Sean Enzo Nebres (github.com/sean-25)[/dim]\n")
+    )
 
-[bold]Workflow Steps:[/bold]
-Analyst team (fundamentals, sentiment, news, and technical)
-  ⬇
-Bullish and Bearish researcher debate
-  ⬇
-Research manager
-  ⬇
-Trader (risk-adjusted)
-  ⬇
-Portfolio manager
-
-[dim]Built by Aadhi Senthilkumar (github.com/asenszn12) and Sean Enzo Nebres (github.com/sean-25)[/dim]
-"""
     console.print(
         Panel(
-            Align.center(header_text), 
+            header_group, 
             border_style="green", 
             title="Welcome to Senzo Trading", 
             subtitle="Multi-Agentic Research Framework for Trading"
@@ -223,4 +215,5 @@ Portfolio manager
     console.rule("[bold red]SENZO TRF FINAL RECOMMENDATION[/bold red]")
     console.print(Panel(Markdown(state.get("manager_recc", "")), title=f"[bold green]Senzo Recommendation — {ticker}[/bold green]", border_style="green"))
 
-main()
+if __name__ == "__main__":
+    main()
