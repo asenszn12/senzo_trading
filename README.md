@@ -168,7 +168,7 @@ Senzo is built on [LangGraph](https://github.com/langchain-ai/langgraph) for orc
 
 - **Data "freshness":** News and Reddit sources only expose a limited recent window, so older analysis dates may return little or no news. Price and fundamental data respect the date you choose.
 - **Rate limits:** Since the application itself runs on the openrouter/free models, these free OpenRouter models allow a limited number of requests per minute and per day.
-- **Model quality varies:** Output quality depends on the model you use. Always read the reasoning rather than just the final verdict.
+- **Model quality varies:** Output quality and speed depends on the model you use. Always read the reasoning rather than just the final verdict.
 - **No execution:** By design, Senzo never trades on your behalf.
 
 ---
