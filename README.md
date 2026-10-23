@@ -150,7 +150,7 @@ senzo_trading/
 │   ├── analysts/        # fundamentals, sentiment, news, technical
 │   ├── researchers/     # bull and bear debate
 │   ├── manager/         # research manager, portfolio manager
-│   ├── trader/          # conservative, neutral and aggressive traders
+│   ├── trader/          # conservative, neutral and aggressive traders (all under a single file)
 │   └── run_task.py      # shared helper for calling the language model
 ├── graph/
 │   ├── state.py         # shared state passed between agents
