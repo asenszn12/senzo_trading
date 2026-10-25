@@ -64,7 +64,7 @@ You choose a profile at the start of each run.
 
 ## Quick start
 
-You will need an OpenRouter API key. Get one at [openrouter.ai](https://openrouter.ai).
+You will need an OpenRouter API key. Get one at [openrouter.ai](https://openrouter.ai). (If you want, you can set a limit for your API key as well in the rare chance you may get charged).
 
 ### Option A: Run with Python (recommended)
 
@@ -168,7 +168,7 @@ Senzo is built on [LangGraph](https://github.com/langchain-ai/langgraph) for orc
 
 - **Data "freshness":** News and Reddit sources only expose a limited recent window, so older analysis dates may return little or no news. Price and fundamental data respect the date you choose.
 - **Rate limits:** Since the application itself runs on the openrouter/free models, these free OpenRouter models allow a limited number of requests per minute and per day.
-- **Model quality varies:** Output quality and speed depends on the model you use. Always read the reasoning rather than just the final verdict.
+- **Model quality varies:** Output quality and speed depends on the model you use from the openrouter/free router. Always read the reasoning rather than just the final verdict.
 - **No execution:** By design, Senzo never trades on your behalf.
 
 ---
