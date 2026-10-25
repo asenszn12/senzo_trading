@@ -175,4 +175,4 @@ Senzo is built on [LangGraph](https://github.com/langchain-ai/langgraph) for orc
 
 ## Credits
 
-Built by Aadhi Senthilkumar ([asenszn12](https://github.com/asenszn12)) and Sean Enzo Nebres ([sean-25](https://github.com/sean-25)).
+Built by Aadhi Senthil Kumar ([asenszn12](https://github.com/asenszn12)) and Sean Enzo Nebres ([sean-25](https://github.com/sean-25)).
