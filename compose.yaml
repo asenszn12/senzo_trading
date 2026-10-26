@@ -11,8 +11,8 @@ services:
   server:
     build:
       context: .
-    ports:
-      - "8000:8000"
+    env_file:
+      - .env
     stdin_open: true
     tty: true
 

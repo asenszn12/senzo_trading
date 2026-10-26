@@ -25,6 +25,7 @@ balance sheets, and cash flow statements) to deliver a clinical assessment of a 
 - Data-driven only. Every assertion must be tied to an explicit metric, dollar amount, or ratio from the provided data.
 - Absolute objectivity. Do not write marketing copy, platitudes, or speculative narratives. 
 - Preserve verbatim figures. Do not round, approximate, or modify numerical values present in the source files.
+- Write large numbers in $ billions (e.g. $215.9B). Never use scientific notation.
 - If data for a specific metric or period is missing, explicitly note: [DATA UNAVAILABLE].
 - Use Australian English spelling conventions (e.g., categorise, prioritising).
 
