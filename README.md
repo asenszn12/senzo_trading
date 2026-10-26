@@ -133,8 +133,10 @@ Your `.env` file holds your settings. It must never be committed to Git.
 # Get your API key from https://openrouter.ai
 OPENROUTER_API_KEY=your_key_here
 
-# Optional: pin a specific model (copy the exact ID from openrouter.ai)
-# OPENROUTER_MODEL=
+# If you want to use a more powerful model or if you are hitting free-tier rate limits, you can edit the code directly:
+1. Open `agents/run_task.py`
+2. Locate line 12: `"model": "openrouter/free"`
+3. Change `"openrouter/free"` to your desired OpenRouter model ID.
 ```
 
 If `OPENROUTER_MODEL` is not set, Senzo uses OpenRouter's free model router. Free models are rate limited, and a full run makes a lot of calls, so you may hit limits. Pinning a specific model gives more consistent results.
