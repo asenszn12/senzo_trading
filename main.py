@@ -39,7 +39,7 @@ def main():
         Align.center("[bold green]Senzo TRF: a multi-agentic research framework for trading.[/bold green]\n"),
         Align.center("[bold][underline]Workflow Steps:[/bold][/underline]\n"),
         Align.center("[italic]Analyst team (fundamentals, sentiment, news, and technical) ➔  Bullish and Bearish researcher debate ➔  Research manager ➔  Trader (risk-adjusted) ➔  Portfolio manager[/italic]\n\n"),
-        Align.center("[dim]Built by Aadhi Senthilkumar (github.com/asenszn12) and Sean Enzo Nebres (github.com/sean-25)[/dim]\n")
+        Align.center("[dim]Built by Aadhi Senthil Kumar (github.com/asenszn12) and Sean Enzo Nebres (github.com/sean-25)[/dim]\n")
     )
 
     console.print(
